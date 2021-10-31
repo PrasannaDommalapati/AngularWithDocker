@@ -23,7 +23,7 @@ WORKDIR /src
 COPY ["AngularWithDocker/AngularWithDocker.csproj", "AngularWithDocker/"]
 RUN dotnet restore "AngularWithDocker/AngularWithDocker.csproj"
 WORKDIR "/src/AngularWithDocker"
-COPY . .
+COPY "AngularWithDocker" .
 RUN dotnet build "AngularWithDocker.csproj" -c Release -o /app
 
 FROM build AS publish
