@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/AngularWithDocker/v16
+/AcceptanceTests/obj
+/obj/Docker

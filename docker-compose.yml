@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  angularwithdocker:
+    image: ${DOCKER_REGISTRY-}angularwithdocker
+    build:
+      context: .
+      dockerfile: AngularWithDocker/Dockerfile
+    ports:
+      - "5000:80"
