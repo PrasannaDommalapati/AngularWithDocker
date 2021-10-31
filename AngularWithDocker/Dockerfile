@@ -20,7 +20,7 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
 #end of nodejs set up
 WORKDIR /src
-COPY ["AngularWithDocker.csproj", "AngularWithDocker/"]
+COPY ["AngularWithDocker/AngularWithDocker.csproj", "AngularWithDocker/"]
 RUN dotnet restore "AngularWithDocker/AngularWithDocker.csproj"
 WORKDIR "/src/AngularWithDocker"
 COPY . .
