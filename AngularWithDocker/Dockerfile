@@ -20,10 +20,10 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
 #end of nodejs set up
 WORKDIR /src
-COPY ["AngularWithDocker/AngularWithDocker.csproj", "AngularWithDocker/"]
+COPY ["AngularWithDocker.csproj", "AngularWithDocker/"]
 RUN dotnet restore "AngularWithDocker/AngularWithDocker.csproj"
 WORKDIR "/src/AngularWithDocker"
-COPY "AngularWithDocker" .
+COPY . .
 RUN dotnet build "AngularWithDocker.csproj" -c Release -o /app
 
 FROM build AS publish
@@ -33,7 +33,9 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
 
-COPY **/AngularWithDocker/ClientApp/ ClientApp/
+COPY ["ClientApp/", "ClientApp/"]
+COPY ["ClientApp/package.json", "ClientApp/"]
+COPY ["ClientApp/package-lock.json", "ClientApp/"]
 
 WORKDIR /app/ClientApp
 RUN npm install -y

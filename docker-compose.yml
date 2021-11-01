@@ -8,3 +8,10 @@ services:
       dockerfile: AngularWithDocker/Dockerfile
     ports:
       - "5000:80"
+  acceptancetests:
+    image: ${DOCKER_REGISTRY-}acceptancetests
+    depends_on:
+      - "angularwithdocker"
+    build:
+      context: .
+      dockerfile: AcceptanceTests/Dockerfile
